@@ -1,0 +1,15 @@
+class Scraper
+  def self.scrape_top_charts(url)
+    doc = open_url(url)
+    top_songs = doc.css("#top-songs a.ChartItemdesktop")
+    binding.pry
+    song_a = top_songs.first
+    title = song_a.css("div.ChartSongdesktop__CoverAndTitle-sc-18658hh-1 h3 div.ChartSongDesktop__Title-sc-18658hh-3")
+    binding.pry
+
+  end
+
+  def self.open_url(url)
+    Nokogiri::HTML(open(url))
+  end
+end
