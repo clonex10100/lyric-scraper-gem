@@ -9,8 +9,8 @@ class CliInterface
       case choice
         when "top"
           top_charts
-        when "top lyrics"
-          top_lyric
+        when "song info"
+          song_info
         when "help"
           help
         when "exit"
@@ -57,6 +57,14 @@ class CliInterface
     title = gets.strip
     print "Please enter the song artist: "
     artist = gets.strip
+  end
+
+  def song_info
+    print ("Please enter song title EXACTLY: ")
+    title = gets.strip
+    print ("Please enter song artist EXACTLY: ")
+    artist = gets.strip
+    SongImporter.import_song(title, artist)
   end
 
   def help

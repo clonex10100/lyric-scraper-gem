@@ -10,4 +10,10 @@ class SongImporter
   def self.import_lyrics(song)
     song.lyrics = Scraper.scrape_lyrics(song.url)
   end
+
+  def self.import_song(title, artist)
+    artist = artist.gsub(" ", "-")
+    title = title.gsub(" ", "-")
+    Scraper.scrape_song_page("#{URL}/#{artist}-#{title}-lyrics")
+  end
 end

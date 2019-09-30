@@ -18,6 +18,20 @@ class Scraper
     doc.css("div.lyrics p").text
   end
 
+  def self.scrape_song_page(url)
+    url = open(url)
+    sleep 1
+    doc = Nokogiri::HTML(url)
+    song_hash = { 
+      title: doc.css("div.header_with_cover_art-primary_info h1").text.strip,
+      artist: doc.css("div.header_with_cover_art-primary_info h2").text.strip,
+      views: doc.css("span.header_with_cover_art-primary_info").text.strip,
+      url: url,
+      lyrics: doc.css("div.lyrics p").text,
+    }
+    binding.pry
+  end
+
   def self.open_url(url)
     Nokogiri::HTML(open(url))
   end

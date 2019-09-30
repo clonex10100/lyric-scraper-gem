@@ -19,7 +19,7 @@ class Song
   def self.find_by_title(title)
     self.all.find { |song| song.title == title }
   end
-  
+
   def self.find_by_chart_pos(pos)
     self.top_charts.find { |song| song.chart_pos == pos }
   end
